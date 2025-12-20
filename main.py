@@ -38,6 +38,11 @@ def game_loop(screen):
         screen.fill('black')        
         updatable.update(dt)
         for a in asteroids:
+            for s in shots:
+                if a.collides_with(s):
+                    print("HIT")
+                    a.kill()
+                    s.kill()
             if a.collides_with(player):
                 log_event("player_hit")
                 print("Game over!")
